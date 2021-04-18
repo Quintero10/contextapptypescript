@@ -24,7 +24,7 @@ const sampleAppContext: AppContextInterface[] | null =null;
   for (let element in responseDataJson) {    
           console.log(responseDataJson[element]);
           sampleAppContext!.push({strGlass:responseDataJson[element].strGlass,id:responseDataJson[element].strGlass});
-  }
+  } 
 
 }
   
