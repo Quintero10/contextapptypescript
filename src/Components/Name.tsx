@@ -1,16 +1,22 @@
 import React from 'react';
-import { AppCtx } from '../Context/Context';
+import { AppContextInterface, AppCtx } from '../Context/Context';
 
 
 const Name = () => {
 
     const appContext = React.useContext(AppCtx);
+       
+    
     console.log(appContext);
-    return (
-        <div>
-            <p>I'm Name Component</p>
-        </div>
-    )
+        return(<div>
+            {
+                appContext?.map((element,value)=>(
+                    <p key={value}>{element.strGlass}</p>
+                ))
+              }
+            </div>)
+    
+   
 }
 
 export default Name;

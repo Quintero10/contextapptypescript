@@ -15,12 +15,13 @@ function App() {
   return (
  
     <Context>
-    <div>
+  
       <Name />
       <Author />
       <Url />
-      </div>
-    </Context>
+
+   
+   </Context>
       
     
    

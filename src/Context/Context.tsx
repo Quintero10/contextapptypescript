@@ -10,28 +10,27 @@ export interface AppContextInterface {
 
  export const AppCtx = React.createContext<AppContextInterface[] | null>(null);
 
-const sampleAppContext: AppContextInterface[] | null =null;
 
+ 
+  export const Context:React.FC= ({children}) => {
+
+    //const sampleAppContext: AppContextInterface[] | null =null;
+    const [categorias, guardarCategorias] = React.useState<AppContextInterface[]>([]);
  const getGlassesCategory= async() =>{
-    
-  const sampleAppContext: AppContextInterface[] | null =null;
-  const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+  
+  const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list';
 
   const categorias = await axios.get(url);
 
   console.log(categorias);
   let responseDataJson=categorias.data.drinks;
-  for (let element in responseDataJson) {    
-          console.log(responseDataJson[element]);
-          sampleAppContext!.push({strGlass:responseDataJson[element].strGlass,id:responseDataJson[element].strGlass});
-  } 
 
+  guardarCategorias(responseDataJson);
 }
-  
-  export const Context:React.FC= ({children}) => {
+  React.useEffect(()=>{getGlassesCategory()},[])
 
     return(
-      <AppCtx.Provider value={sampleAppContext}>...</AppCtx.Provider>
+      <AppCtx.Provider value={categorias}>{children}</AppCtx.Provider>
     );
     
   }
